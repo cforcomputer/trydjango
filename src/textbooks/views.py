@@ -7,14 +7,22 @@ from .models import Textbook
 # everything under the textbooks 'view' should be contained within
 # textbooks
 
+# def textbook_create_view(request):
+#     form = TextbookForm(request.POST or None)
+#     if form.is_valid():
+#         form.save()
+#         form = TextbookForm()
+#     context = {
+#         'form': form
+#     }
+#     return render(request, "textbooks/textbook_create.html", context)
+
 def textbook_create_view(request):
-    form = TextbookForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        form = TextbookForm()
-    context = {
-        'form': form
-    }
+    print(request.GET)
+    print(request.POST)
+    my_new_title = request.POST.get('title')
+    print(my_new_title)
+    context = {}
     return render(request, "textbooks/textbook_create.html", context)
 
 def question_detail_view(request):
